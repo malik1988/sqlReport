@@ -1,4 +1,4 @@
-# SqlReport 数据库使用示例
+# SqlReport 串口通讯修改数据库示例
 
 ## 环境
 C# .net4.6
