@@ -167,6 +167,23 @@ namespace MsgManager
         SqlManager.SqlHelper sql = new SqlManager.SqlHelper();
         string sql_tableName = "Message";
 
+        object objectLock = new object();
+        public delegate void MsgStructEventHandler(object sender, MsgStructEventArgs e);
+        event  MsgStructEventHandler PostDataUpdate;  //数据更新后事件处理
+        public event MsgStructEventHandler OnPostDataUpdate
+        {
+            add
+            {
+                lock (objectLock)
+                {
+                    PostDataUpdate += value;
+                }
+            }
+            remove
+            {
+                lock (objectLock) { PostDataUpdate -= value; }
+            }
+        }
 
         /// <summary>
         /// 数据接收处理
@@ -217,7 +234,7 @@ namespace MsgManager
 
         }
 
-        string bytesToHexString(byte[] inBytes)
+        public string bytesToHexString(byte[] inBytes)
         {
             string str = "";
             foreach (byte b in inBytes)
@@ -332,7 +349,28 @@ namespace MsgManager
 
                 com.Write(data, 0, data.Length);
             }
+
+            if(PostDataUpdate!=null)
+            {
+                PostDataUpdate(this, new MsgStructEventArgs(msg));
+            }
         }
 
     }//ComManager
+
+    class MsgStructEventArgs:EventArgs
+    {
+        MsgStruct message;
+        public MsgStructEventArgs(MsgStruct msg)
+        {
+            this.message = msg;
+        }
+
+        public MsgStruct Msg
+        {
+            get { return this.message; }
+        }
+
+    }
+ 
 }

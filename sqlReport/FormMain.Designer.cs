@@ -30,26 +30,29 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox_port = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox_baudrate = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox_parity = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button_connect = new System.Windows.Forms.Button();
+            this.comboBox_stops = new System.Windows.Forms.ComboBox();
             this.comboBox_bits = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox_stops = new System.Windows.Forms.ComboBox();
-            this.button_connect = new System.Windows.Forms.Button();
+            this.comboBox_parity = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox_baudrate = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox_port = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -73,16 +76,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "基本设置";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(872, 567);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "数据显示";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -112,70 +105,25 @@
             this.splitContainer1.SplitterDistance = 41;
             this.splitContainer1.TabIndex = 0;
             // 
-            // label1
+            // button_connect
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "串口号：";
+            this.button_connect.Location = new System.Drawing.Point(770, 5);
+            this.button_connect.Name = "button_connect";
+            this.button_connect.Size = new System.Drawing.Size(91, 30);
+            this.button_connect.TabIndex = 2;
+            this.button_connect.Text = "连接";
+            this.button_connect.UseVisualStyleBackColor = true;
+            this.button_connect.Click += new System.EventHandler(this.button_connect_Click);
             // 
-            // comboBox_port
+            // comboBox_stops
             // 
-            this.comboBox_port.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_port.FormattingEnabled = true;
-            this.comboBox_port.Location = new System.Drawing.Point(62, 8);
-            this.comboBox_port.Name = "comboBox_port";
-            this.comboBox_port.Size = new System.Drawing.Size(83, 20);
-            this.comboBox_port.TabIndex = 1;
-            this.comboBox_port.SelectedIndexChanged += new System.EventHandler(this.comboBox_port_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(160, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "波特率：";
-            // 
-            // comboBox_baudrate
-            // 
-            this.comboBox_baudrate.FormattingEnabled = true;
-            this.comboBox_baudrate.Location = new System.Drawing.Point(219, 8);
-            this.comboBox_baudrate.Name = "comboBox_baudrate";
-            this.comboBox_baudrate.Size = new System.Drawing.Size(89, 20);
-            this.comboBox_baudrate.TabIndex = 1;
-            this.comboBox_baudrate.SelectedIndexChanged += new System.EventHandler(this.comboBox_baudrate_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(330, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "校验位：";
-            // 
-            // comboBox_parity
-            // 
-            this.comboBox_parity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_parity.FormattingEnabled = true;
-            this.comboBox_parity.Location = new System.Drawing.Point(389, 8);
-            this.comboBox_parity.Name = "comboBox_parity";
-            this.comboBox_parity.Size = new System.Drawing.Size(73, 20);
-            this.comboBox_parity.TabIndex = 1;
-            this.comboBox_parity.SelectedIndexChanged += new System.EventHandler(this.comboBox_parity_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(473, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "数据位：";
+            this.comboBox_stops.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_stops.FormattingEnabled = true;
+            this.comboBox_stops.Location = new System.Drawing.Point(680, 8);
+            this.comboBox_stops.Name = "comboBox_stops";
+            this.comboBox_stops.Size = new System.Drawing.Size(75, 20);
+            this.comboBox_stops.TabIndex = 1;
+            this.comboBox_stops.SelectedIndexChanged += new System.EventHandler(this.comboBox_stops_SelectedIndexChanged);
             // 
             // comboBox_bits
             // 
@@ -196,25 +144,70 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "停止位：";
             // 
-            // comboBox_stops
+            // comboBox_parity
             // 
-            this.comboBox_stops.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_stops.FormattingEnabled = true;
-            this.comboBox_stops.Location = new System.Drawing.Point(680, 8);
-            this.comboBox_stops.Name = "comboBox_stops";
-            this.comboBox_stops.Size = new System.Drawing.Size(75, 20);
-            this.comboBox_stops.TabIndex = 1;
-            this.comboBox_stops.SelectedIndexChanged += new System.EventHandler(this.comboBox_stops_SelectedIndexChanged);
+            this.comboBox_parity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_parity.FormattingEnabled = true;
+            this.comboBox_parity.Location = new System.Drawing.Point(389, 8);
+            this.comboBox_parity.Name = "comboBox_parity";
+            this.comboBox_parity.Size = new System.Drawing.Size(73, 20);
+            this.comboBox_parity.TabIndex = 1;
+            this.comboBox_parity.SelectedIndexChanged += new System.EventHandler(this.comboBox_parity_SelectedIndexChanged);
             // 
-            // button_connect
+            // label4
             // 
-            this.button_connect.Location = new System.Drawing.Point(770, 5);
-            this.button_connect.Name = "button_connect";
-            this.button_connect.Size = new System.Drawing.Size(91, 30);
-            this.button_connect.TabIndex = 2;
-            this.button_connect.Text = "连接";
-            this.button_connect.UseVisualStyleBackColor = true;
-            this.button_connect.Click += new System.EventHandler(this.button_connect_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(473, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "数据位：";
+            // 
+            // comboBox_baudrate
+            // 
+            this.comboBox_baudrate.FormattingEnabled = true;
+            this.comboBox_baudrate.Location = new System.Drawing.Point(219, 8);
+            this.comboBox_baudrate.Name = "comboBox_baudrate";
+            this.comboBox_baudrate.Size = new System.Drawing.Size(89, 20);
+            this.comboBox_baudrate.TabIndex = 1;
+            this.comboBox_baudrate.SelectedIndexChanged += new System.EventHandler(this.comboBox_baudrate_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(330, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "校验位：";
+            // 
+            // comboBox_port
+            // 
+            this.comboBox_port.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_port.FormattingEnabled = true;
+            this.comboBox_port.Location = new System.Drawing.Point(62, 8);
+            this.comboBox_port.Name = "comboBox_port";
+            this.comboBox_port.Size = new System.Drawing.Size(83, 20);
+            this.comboBox_port.TabIndex = 1;
+            this.comboBox_port.SelectedIndexChanged += new System.EventHandler(this.comboBox_port_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(160, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "波特率：";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "串口号：";
             // 
             // richTextBox1
             // 
@@ -224,6 +217,27 @@
             this.richTextBox1.Size = new System.Drawing.Size(866, 516);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(872, 567);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "数据显示";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(866, 561);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -241,6 +255,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,6 +279,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

@@ -34,7 +34,7 @@ namespace sqlReport
         ComManager comManager = new ComManager();
 
         SerialPort serial = new SerialPort();
-        
+
         void Dispose_SerialPort()
         {
             if (serial.IsOpen)
@@ -63,8 +63,27 @@ namespace sqlReport
             this.comboBox_stops.Items.AddRange(stops);
             this.comboBox_stops.SelectedIndex = 0;
 
-            serial.DataReceived+=comManager.com_DataReceived;
+            serial.DataReceived += comManager.com_DataReceived;
+            comManager.OnPostDataUpdate += ComManager_OnPostDataUpdate;
         }
+
+        private void ComManager_OnPostDataUpdate(object sender, MsgStructEventArgs e)
+        {
+            MsgStruct msg = e.Msg;
+            string strMsgId = comManager.bytesToHexString(msg.msgId);
+            string strDevId = comManager.bytesToHexString(msg.devId);
+            string strCode = comManager.bytesToHexString(msg.code);
+            string strMsg = "";
+            if (msg.msg != null)
+                strMsg = comManager.bytesToHexString(msg.msg);
+
+            this.Invoke((EventHandler)(delegate
+            {
+                string text = string.Format("msgId:{0},devId:{1},code:{2},msg:{3}\n", strMsgId, strDevId, strCode, strMsg);
+                this.richTextBox1.AppendText(text);
+            }));
+        }
+
         private void comboBox_port_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
@@ -80,7 +99,7 @@ namespace sqlReport
         private void comboBox_parity_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            switch(cb.Text)
+            switch (cb.Text)
             {
                 case "None":
                     serial.Parity = Parity.None;
@@ -107,7 +126,7 @@ namespace sqlReport
         private void comboBox_stops_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            switch(cb.Text)
+            switch (cb.Text)
             {
                 case "1":
                     serial.StopBits = StopBits.One;
