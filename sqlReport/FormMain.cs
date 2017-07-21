@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 using System.IO.Ports;
 using MsgManager;
+using SqlManager;
 
 namespace sqlReport
 {
@@ -27,7 +28,15 @@ namespace sqlReport
         private void FormMain_Load(object sender, EventArgs e)
         {
             Init_SerialPort();
+            Init_DataGridView();
+            this.Resize += FormMain_Resize;
         }
+
+        private void FormMain_Resize(object sender, EventArgs e)
+        {
+            this.Update_DataGridView();
+        }
+
 
 
         #region 串口初始化设置
@@ -81,6 +90,7 @@ namespace sqlReport
             {
                 string text = string.Format("msgId:{0},devId:{1},code:{2},msg:{3}\n", strMsgId, strDevId, strCode, strMsg);
                 this.richTextBox1.AppendText(text);
+                this.Update_DataGridView();
             }));
         }
 
@@ -161,5 +171,21 @@ namespace sqlReport
         }
         #endregion
 
+        static string sql_tableName = "Message";
+        string sql_select = string.Format(@"select id,devId,code,msg,time from {0}", sql_tableName);
+        SqlHelper sql = new SqlHelper();
+        void Init_DataGridView()
+        {
+            sql.open();
+            DataSet ds = sql.ExecuteDataSet(sql_select);
+            sql.close();
+            int[] scaler = new int[] { 1, 2, 2,2, 1 };
+            DataGridViewAdapter adp = new DataGridViewAdapter(this.dataGridView1, ds.Tables[0], scaler);
+
+        }
+        void Update_DataGridView()
+        {
+            Init_DataGridView();
+        }
     }
 }
